@@ -1,0 +1,827 @@
+{
+	"info": {
+		"_postman_id": "aaf484fc-53c0-48c1-a217-277c21db3e47",
+		"name": "Recetas Copy 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30757219"
+	},
+	"item": [
+		{
+			"name": "DB Vacía",
+			"item": [
+				{
+					"name": "recetas vacío",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"No hay recetas\", function(){\r",
+									"    pm.response.to.have.status(500)\r",
+									"    pm.response.to.have.jsonBody(\"ok\", false)\r",
+									"    pm.response.to.have.jsonBody(\"error\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{service}}/recetas",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recetas/:id mal id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Mal id de receta\", function(){\r",
+									"    pm.response.to.have.status(400)\r",
+									"    pm.response.to.have.jsonBody(\"ok\", false)\r",
+									"    pm.response.to.have.jsonBody(\"error\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{service}}/recetas/23123",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas",
+								"23123"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "No Autorizado",
+			"item": [
+				{
+					"name": "receta sin autorización",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"POST no autorizado\", function(){\r",
+									"    pm.response.to.have.status(401)\r",
+									"    pm.response.to.have.jsonBody(\"ok\", false)\r",
+									"    pm.response.to.have.jsonBody(\"error\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"test\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/recetas",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificación ingredientes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"POST no autorizado\", function(){\r",
+									"    pm.response.to.have.status(401)\r",
+									"    pm.response.to.have.jsonBody(\"ok\", false)\r",
+									"    pm.response.to.have.jsonBody(\"error\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"test\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/recetas/elementos/{{id_receta}}",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas",
+								"elementos",
+								"{{id_receta}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificación receta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"POST no autorizado\", function(){\r",
+									"    pm.response.to.have.status(401)\r",
+									"    pm.response.to.have.jsonBody(\"ok\", false)\r",
+									"    pm.response.to.have.jsonBody(\"error\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"test\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/recetas/{{id_receta}}",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas",
+								"{{id_receta}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar receta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"POST no autorizado\", function(){\r",
+									"    pm.response.to.have.status(401)\r",
+									"    pm.response.to.have.jsonBody(\"ok\", false)\r",
+									"    pm.response.to.have.jsonBody(\"error\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"test\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/recetas/{{id_receta}}",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas",
+								"{{id_receta}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mal usuario",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Mal Login\", function(){",
+									"    pm.response.to.have.status(401)",
+									"    pm.response.to.have.jsonBody(\"ok\", false)",
+									"    pm.response.to.have.jsonBody(\"error\")",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"incorrecto\",\r\n    \"password\": \"incorrecto\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/auth/login",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autorizado",
+			"item": [
+				{
+					"name": "usuario correcto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Usuario Correcto\", function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"    pm.response.to.have.jsonBody(\"ok\", true)\r",
+									"    pm.response.to.have.jsonBody(\"resultado\")\r",
+									"    pm.environment.set(\"token\", pm.response.json().resultado)\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"user1\",\r\n    \"password\": \"contrasenya1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/auth/login",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "receta errónea",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Formato receta no válido\", function(){\r",
+									"    pm.response.to.have.status(400)\r",
+									"    pm.response.to.have.jsonBody(\"ok\", false)\r",
+									"    pm.response.to.have.jsonBody(\"error\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"test\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/recetas",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "receta válida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Inserción de receta correcto\", function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"    pm.response.to.have.jsonBody(\"ok\", true)\r",
+									"    pm.environment.set(\"id_receta\", pm.response.json().resultado._id)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"receta de test\",\r\n    \"comensales\": 3,\r\n    \"preparacion\": 3,\r\n    \"coccion\": 3,\r\n    \"descripcion\": \"Descripción de test\",\r\n    \"ingredientes\": [\r\n        {\r\n            \"nombre\": \"Ingrediente de test\",\r\n            \"cantidad\": 3,\r\n            \"unidad\": \"cucharadas\"\r\n        } \r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/recetas",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ingrediente erróneo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ingrediente erróneo\", function(){\r",
+									"    pm.response.to.have.status(400),\r",
+									"    pm.response.to.have.jsonBody(\"ok\", false)\r",
+									"    pm.response.to.have.jsonBody(\"error\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"test\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/recetas/elementos/{{id_receta}}",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas",
+								"elementos",
+								"{{id_receta}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "añadir ingrediente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Añadir nuevo ingrediente válido\", function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"    pm.response.to.have.jsonBody(\"ok\", true)\r",
+									"    pm.expect(pm.response.json().resultado.ingredientes).to.have.lengthOf(2)\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Ingrediente de test añadir\",\r\n    \"cantidad\": 4,\r\n    \"unidad\": \"gr\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/recetas/elementos/{{id_receta}}",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas",
+								"elementos",
+								"{{id_receta}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cambiar receta no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ingrediente erróneo\", function(){\r",
+									"    pm.response.to.have.status(400),\r",
+									"    pm.response.to.have.jsonBody(\"ok\", false)\r",
+									"    pm.response.to.have.jsonBody(\"error\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"título cambiado\",\r\n    \"comensales\": 3,\r\n    \"preparacion\": 3,\r\n    \"coccion\": 3,\r\n    \"descripcion\": \"Descripción de test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/recetas/666f240ce209fb623c125a59",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas",
+								"666f240ce209fb623c125a59"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cambiar receta e ingredientes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ingrediente erróneo\", function(){\r",
+									"    pm.response.to.have.status(400),\r",
+									"    pm.response.to.have.jsonBody(\"ok\", false)\r",
+									"    pm.response.to.have.jsonBody(\"error\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"título cambiado\",\r\n    \"comensales\": 3,\r\n    \"preparacion\": 3,\r\n    \"coccion\": 3,\r\n    \"descripcion\": \"Descripción de test\",\r\n    \"ingredientes\": [\r\n        {\r\n            \"nombre\": \"Ingrediente de test\",\r\n            \"cantidad\": 3,\r\n            \"unidad\": \"cucharadas\"\r\n        } \r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/recetas/{{id_receta}}",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas",
+								"{{id_receta}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cambiar receta válido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Añadir nuevo ingrediente válido\", function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"    pm.response.to.have.jsonBody(\"ok\", true)\r",
+									"    pm.expect(pm.response.json().resultado.titulo).to.eql(\"título cambiado\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"título cambiado\",\r\n    \"comensales\": 3,\r\n    \"preparacion\": 3,\r\n    \"coccion\": 3,\r\n    \"descripcion\": \"Descripción de test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service}}/recetas/{{id_receta}}",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas",
+								"{{id_receta}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar id no válido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ingrediente erróneo\", function(){\r",
+									"    pm.response.to.have.status(400),\r",
+									"    pm.response.to.have.jsonBody(\"ok\", false)\r",
+									"    pm.response.to.have.jsonBody(\"error\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{service}}/recetas/error",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas",
+								"error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "receta no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ingrediente erróneo\", function(){\r",
+									"    pm.response.to.have.status(400),\r",
+									"    pm.response.to.have.jsonBody(\"ok\", false)\r",
+									"    pm.response.to.have.jsonBody(\"error\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{service}}/recetas/666f240ce209fb623c125a59",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas",
+								"666f240ce209fb623c125a59"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar id válido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Borrar ingrediente válido\", function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"    pm.response.to.have.jsonBody(\"ok\", true)\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{service}}/recetas/{{id_receta}}",
+							"host": [
+								"{{service}}"
+							],
+							"path": [
+								"recetas",
+								"{{id_receta}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "service",
+			"value": "http://vps-057c1ce8.vps.ovh.net:8080",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "nothing"
+		},
+		{
+			"key": "id_receta",
+			"value": "testing"
+		}
+	]
+}
